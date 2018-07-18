@@ -1,0 +1,24 @@
+{
+    "name": "springcms/springadmins",
+    "description": "springcms bankend",
+    "license": "1.0",
+    "authors": [
+        {
+            "name": "SpringComplate",
+            "email": "vietopenweb@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+	"autoload": {
+        "psr-4": {          
+           "SpringCms\\SpringAdmins\\" : "src/"     
+        }
+    },
+    "extra": {        
+        "laravel": {
+            "providers": [
+                "SpringCms\\SpringAdmins\\SpringAdminsServiceProvider"
+            ]
+        }
+    }
+}
