@@ -3,7 +3,7 @@
 <head>  
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>@yield('title_prefix', config('springadmins.title_prefix', ''))
+    <title>
     @yield('title', config('springadmins.title', 'springadmins 2'))
     @yield('title_postfix', config('springadmins.title_postfix', ''))</title>
     <!-- Tell the browser to be responsive to screen width -->
@@ -73,7 +73,6 @@
 
 <!-- bootstrap time picker -->
 <script src="{{ asset('vendor/springadmins/plugins/timepicker/bootstrap-timepicker.min.js')}}"></script>
-
 
 <!-- AdminLTE App -->
 <script src="{{ asset('vendor/springadmins/dist/js/adminlte.min.js')}}"></script>
