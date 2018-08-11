@@ -6,12 +6,11 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\Permission\Traits\HasRoles;
 
-
 class SpringAdmin extends Authenticatable
 {
     use Notifiable;
     use HasRoles;
-
+    
     protected $guard = "springadmins";
     /**
      * The attributes that are mass assignable.

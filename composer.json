@@ -4,11 +4,14 @@
     "license": "1.0",
     "authors": [
         {
-            "name": "SpringComplate",
-            "email": "vietopenweb@gmail.com"
+            "name": "Spring Open",
+            "email": "springWeb@gmail.com"
         }
     ],
     "minimum-stability": "dev",
+    "require": {
+        "spatie/laravel-permission": "*.*"
+    },
 	"autoload": {
         "psr-4": {          
            "SpringCms\\SpringAdmins\\" : "src/"     
