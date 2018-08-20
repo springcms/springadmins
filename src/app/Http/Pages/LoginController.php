@@ -60,7 +60,7 @@ class LoginController extends Controller
 
 
     public function showlogin($value='')
-    {          
+    {      
         return view('springadmins::pages.login');
     }
 

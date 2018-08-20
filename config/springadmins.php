@@ -166,11 +166,12 @@ return [
                         ],
                         [
                             'text'    => 'Level Two',
-                            'url'     => '#',
+                            'url'     => '#',                            
                             'submenu' => [
                                 [
-                                    'text' => 'Level Three',
-                                    'url'  => '#',
+                                    'text' => 'Level fisrt three',
+                                    //'url'  => '#',
+                                    //'route'=> 'springadmins.users',
                                 ],
                                 [
                                     'text' => 'Level Three',

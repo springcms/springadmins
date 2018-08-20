@@ -68,7 +68,7 @@ class SpringAdminsServiceProvider extends BaseServiceProvider
     public static function registerMenu(Dispatcher $events, Repository $config)
     {
         $events->listen(BuildingMenu::class, function (BuildingMenu $event) use ($config) {
-            $menu = $config->get('springadmins.menu');
+            $menu = $config->get('springadmins.menu');            
             call_user_func_array([$event->menu, 'add'], $menu);
         });
     }
