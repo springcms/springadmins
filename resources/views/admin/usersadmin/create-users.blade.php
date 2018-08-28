@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'AdminLTE LaraCMS')
+@section('title', 'Create system user')
 
 @section('content_header')
     <h1>Create User </h1>

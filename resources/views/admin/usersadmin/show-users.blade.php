@@ -1,7 +1,7 @@
 
 @extends('springadmins::layouts.page')
 
-@section('title', 'AdminLTE LaraCMS')
+@section('title', 'System Users list')
 
 @section('content_header')
 

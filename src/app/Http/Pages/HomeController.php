@@ -14,6 +14,10 @@ use SpringCms\SpringAdmins\SpringAdmins;
 use Illuminate\Contracts\Config\Repository;
 use SpringCms\SpringAdmins\App\ViewComposers\SpringAdminsComposer;
 
+use App\Mail\SpringMail;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Http\Request;
 
 class HomeController extends SpringAdminsBaseController
 {
@@ -33,10 +37,21 @@ class HomeController extends SpringAdminsBaseController
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {  
-
+        $sendmail = Input::get('sendmail');   
+        //$sendmail = $request->input('sendmail');       
+        if($sendmail=='send'){
+            $objDemo = new \stdClass();
+            $objDemo->demo_one = 'Demo One Value';
+            $objDemo->demo_two = 'Demo Two Value';
+            $objDemo->sender = 'SenderUserName';
+            $objDemo->receiver = 'ReceiverUserName';
     
+            $result = Mail::to("hoantx@vimo.vn")->send(new SpringMail($objDemo));
+            dd($result);
+        }
+        
 
         // // Reset cached roles and permissions
         //     app()['cache']->forget('spatie.permission.cache');

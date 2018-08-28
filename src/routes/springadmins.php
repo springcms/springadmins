@@ -70,7 +70,7 @@ Route::group(['middleware' => 'web','prefix'=>'springadmins', 'namespace' => 'Sp
             //'destroy' => 'user-admin.destroy',
         ],
     ]);
-    Route::resource('menus-system', 'MenusSystemController', [
+    Route::resource('system-menus', 'SystemMenusController', [
         'names' => [
             'index'   => 'menus',
             //'destroy' => 'user-admin.destroy',

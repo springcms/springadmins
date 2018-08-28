@@ -1,6 +1,6 @@
 @extends('springadmins::layouts.page')
 
-@section('title', 'AdminLTE')
+@section('title', 'Spring')
 
 @section('content_header')
     <h1>Dashboard</h1>

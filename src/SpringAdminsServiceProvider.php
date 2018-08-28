@@ -107,7 +107,7 @@ class SpringAdminsServiceProvider extends BaseServiceProvider
     private function publishAssets()
     {
         $this->publishes([
-            $this->packagePath('resources/assets') => public_path('vendor/springadmins'),
+            $this->packagePath('vendor/almasaeed2010/adminlte') => public_path('vendor/springadmins'),
         ], 'springassets');
     }
 

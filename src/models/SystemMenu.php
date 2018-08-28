@@ -34,7 +34,7 @@ class SystemMenu extends Model
      */
     public function children()
     {
-        return $this->hasMany('SpringCms\SpringAdmins\Models\MenusSystem', 'parent_id', 'id')->orderBy('position');
+        return $this->hasMany('SpringCms\SpringAdmins\Models\SystemMenu', 'parent_id', 'id')->orderBy('position');
     }
 
     public function roles()

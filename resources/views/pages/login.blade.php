@@ -10,7 +10,7 @@
 @section('body')
     <div class="login-box">
         <div class="login-logo">
-            <a href="{{ url(config('springadmins.dashboard_url', 'home')) }}"><b>Spring</b> CMS {!! config('springadmins.logo', 'Admin LTE') !!}</a>
+            <a href="{{ url(config('springadmins.dashboard_url', 'home')) }}">{!! config('springadmins.logo', 'Spring CMS Admin') !!}</a>
         </div>
         <!-- /.login-logo -->
         <div class="login-box-body">
