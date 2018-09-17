@@ -11,7 +11,7 @@ return [
     | of your page. You can override it per page with the title section.
     | You can optionally also specify a title prefix and/or postfix.
     |
-    */
+ */
 
     'title' => 'Spring CMS Admin',
 
@@ -28,7 +28,7 @@ return [
     | You can use basic HTML here if you want. The logo has also a mini
     | variant, used for the mini side bar. Make it 3 letters or so
     |
-    */
+     */
 
     'logo' => '<b>Spring CMS </b>Admin',
 
@@ -43,7 +43,7 @@ return [
     | blue, black, purple, yellow, red, and green. Each skin also has a
     | ligth variant: blue-light, purple-light, purple-light, etc.
     |
-    */
+     */
 
     'skin' => 'blue',
 
@@ -56,7 +56,7 @@ return [
     | null, 'boxed', 'fixed', 'top-nav'. null is the default, top-nav
     | removes the sidebar and places your menu in the top navbar
     |
-    */
+     */
 
     'layout' => null,
 
@@ -69,7 +69,7 @@ return [
     | bar. To adjust your sidebar layout simply set this  either true
     | this is compatible with layouts except top-nav layout option
     |
-    */
+     */
 
     'collapse_sidebar' => false,
 
@@ -83,7 +83,7 @@ return [
     | You can set the request to a GET or POST with logout_method.
     | Set register_url to null if you don't want a register link.
     |
-    */
+     */
 
     'dashboard_url' => 'home',
 
@@ -105,68 +105,85 @@ return [
     | Font Awesome. A string instead of an array represents a header in sidebar
     | layout. The 'can' is a filter on Laravel's built in Gate functionality.
     |
-    */
+     */
 
     'menu' => [
         'SYSTEM',
         [
-            'text'       => 'admin users',
+            'text' => 'System users',
             'icon_color' => 'red',
-             'url'     =>'springadmins/users-admin',
+            'url' => 'springadmins/system-users',
+            'icon' => 'user',
         ],
         [
-            'text'       => 'admin menu',
+            'text' => 'System menu',
             'icon_color' => 'yellow',
-             'url'     =>'springadmins/menus-system',
+            'url' => 'springadmins/system-menus',
         ],
         [
-            'text'       => 'admin role',
+            'text' => 'System authorities',
             'icon_color' => 'aqua',
-            'route'=> 'springadmins.users',
+            'url' => 'springadmins/system-authorities',
+        ],
+        'CUSTOMERS',
+        [
+            'text' => 'Customers',
+            'icon_color' => 'red',
+            'url' => 'springadmins/customers',
+        ],
+        [
+            'text' => 'Customer accounts',
+            'icon_color' => 'yellow',
+            'url' => 'springadmins/customer-accounts',
+        ],
+        [
+            'text' => 'Customer verify',
+            'icon_color' => 'aqua',
+            'url' => 'springadmins/customer-verify',
         ],
         'MAIN NAVIGATION',
         [
             'text' => 'Blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
+            'url' => 'admin/blog',
+            'can' => 'manage-blog',
         ],
         [
-            'text'        => 'Pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'file',
-            'label'       => 4,
+            'text' => 'Pages',
+            'url' => 'admin/pages',
+            'icon' => 'file',
+            'label' => 4,
             'label_color' => 'success',
         ],
         'ACCOUNT SETTINGS',
         [
             'text' => 'Profile',
-            'url'  => 'admin/settings',            
+            'url' => 'admin/settings',
             'icon' => 'user',
         ],
         [
             'text' => 'Change Password',
-            'url'  => 'admin/settings',
+            'url' => 'admin/settings',
             'icon' => 'lock',
         ],
         [
-            'text'    => 'Multilevel',
-            'icon'    => 'share',
+            'text' => 'Multilevel',
+            'icon' => 'share',
             'submenu' => [
                 [
                     'text' => 'Level One',
-                    'url'  => '#',
+                    'url' => '#',
                 ],
                 [
-                    'text'    => 'Level One',
-                    'url'     => '#',                    
+                    'text' => 'Level One',
+                    'url' => '#',
                     'submenu' => [
                         [
                             'text' => 'Level Two',
-                            'url'  => '#',
+                            'url' => '#',
                         ],
                         [
-                            'text'    => 'Level Two',
-                            'url'     => '#',                            
+                            'text' => 'Level Two',
+                            'url' => '#',
                             'submenu' => [
                                 [
                                     'text' => 'Level fisrt three',
@@ -175,7 +192,7 @@ return [
                                 ],
                                 [
                                     'text' => 'Level Three',
-                                    'url'  => '#',
+                                    'url' => '#',
                                 ],
                             ],
                         ],
@@ -183,24 +200,24 @@ return [
                 ],
                 [
                     'text' => 'Level One',
-                    'url'  => '#',
+                    'url' => '#',
                 ],
             ],
         ],
         'LABELS',
         [
-            'text'       => 'Important',
+            'text' => 'Important',
             'icon_color' => 'red',
         ],
         [
-            'text'       => 'Warning',
+            'text' => 'Warning',
             'icon_color' => 'yellow',
         ],
         [
-            'text'       => 'Information',
+            'text' => 'Information',
             'icon_color' => 'aqua',
         ],
-        
+
     ],
 
     /*
@@ -213,7 +230,7 @@ return [
     | You can comment out the GateFilter if you don't want to use Laravel's
     | built in Gate functionality
     |
-    */
+     */
 
     'filters' => [
         SpringCms\SpringAdmins\Menu\Filters\HrefFilter::class,
@@ -232,11 +249,11 @@ return [
     | only DataTables is supported as a plugin. Set the value to true
     | to include the JavaScript file from a CDN via a script tag.
     |
-    */
+     */
 
     'plugins' => [
         'datatables' => true,
-        'select2'    => true,
-        'chartjs'    => true,
+        'select2' => true,
+        'chartjs' => true,
     ],
 ];

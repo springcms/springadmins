@@ -18,7 +18,9 @@ class SpringAdminsBaseController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:springadmins');
+        //$this->middleware('auth:springadmins');
+        $this->middleware(['auth:springadmins', 'role:moderator|super-admin|moderator']);  
+             
     }
     
 }

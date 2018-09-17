@@ -11,7 +11,7 @@ return [
         'providers' => [
             'springadmins' => [
                 'driver' => 'eloquent',
-                'model' => SpringCms\SpringAdmins\Models\SpringAdmin::class,
+                'model' => SpringCms\SpringAdmins\Models\SystemUser::class,
             ]
         ],
         'passwords' => [

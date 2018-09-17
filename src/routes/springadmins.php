@@ -64,15 +64,21 @@ Route::get('/springadmins', function () {
 
 // APP Routes Below
 Route::group(['middleware' => 'web','prefix'=>'springadmins', 'namespace' => 'SpringCms\SpringAdmins\App\Http\Resources'], function () {
-    Route::resource('users-admin', 'UsersAdminController', [
+    Route::resource('system-users', 'SystemUsersController', [
         'names' => [
-            'index'   => 'springadmins.users',
+            'index'   => 'system-users',
             //'destroy' => 'user-admin.destroy',
         ],
     ]);
     Route::resource('system-menus', 'SystemMenusController', [
         'names' => [
-            'index'   => 'menus',
+            'index'   => 'system-menus',
+            //'destroy' => 'user-admin.destroy',
+        ],
+    ]);
+    Route::resource('customers', 'CustomersController', [
+        'names' => [
+            'index'   => 'customers',
             //'destroy' => 'user-admin.destroy',
         ],
     ]);

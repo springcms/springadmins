@@ -18,6 +18,10 @@ use App\Mail\SpringMail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
+use SpringCms\SpringAdmins\Models\SystemUser;
+use SpringCms\SpringAdmins\Traits\Authorizable;
+
+
 
 class HomeController extends SpringAdminsBaseController
 {
@@ -30,6 +34,8 @@ class HomeController extends SpringAdminsBaseController
     public function __construct()
     {
         parent::__construct();
+        
+        
     }
 
     /**
@@ -39,6 +45,10 @@ class HomeController extends SpringAdminsBaseController
      */
     public function index(Request $request)
     {  
+
+        $this->authorize($ability);
+        
+
         $sendmail = Input::get('sendmail');   
         //$sendmail = $request->input('sendmail');       
         if($sendmail=='send'){
@@ -53,44 +63,49 @@ class HomeController extends SpringAdminsBaseController
         }
         
 
-        // // Reset cached roles and permissions
-        //     app()['cache']->forget('spatie.permission.cache');
+            // // Reset cached roles and permissions
+            //    app()['cache']->forget('spatie.permission.cache');
 
-        //     // create permissions
-        //     Permission::create(['name' => 'edit articles']);       
-        //     Permission::create(['name' => 'delete articles']);
-        //     Permission::create(['name' => 'publish articles']);
-        //     Permission::create(['name' => 'unpublish articles']);
+            // // create permissions
+            // Permission::create(['name' => 'edit customers']);       
+            // Permission::create(['name' => 'delete customers']);
+            // Permission::create(['name' => 'publish customers']);
+            // Permission::create(['name' => 'unpublish customers']);
 
-        //     // create roles and assign created permissions
+            // create roles and assign created permissions
 
-        //     $role = Role::create(['name' => 'Operator']);
-        //     $role->givePermissionTo('edit articles');
+           // $role = Role::create(['name' => 'operator']);
+            // $role = Role::findByName('operator');
+            // $role->givePermissionTo('edit customers');
 
-        //     $role = Role::create(['name' => 'moderator']);
-        //     $role->givePermissionTo(['publish articles', 'unpublish articles']);
+            // $role = Role::create(['name' => 'moderator']);
+            // $role->givePermissionTo(['publish customers', 'unpublish customers']);
 
-        //     $role = Role::create(['name' => 'super-admin']);
-        //     $role->givePermissionTo(Permission::all());
+            // $role = Role::create(['name' => 'super-admin']);
+            // $role->givePermissionTo(Permission::all());
 
 
+        app()['cache']->forget('spatie.permission.cache');
+        $user = Auth::user(); 
+        echo \Request::route()->getname();    
+        //Permission::create(['name' => 'view customers']);
+        $user->givePermissionTo('view customers');
+        //$user->givePermissionTo(['edit customers', 'delete customers']);   
+        dd($user->can("unpublish customers"));
+        dd($user->hasRole(Role::findByName('moderator')));
+        $user->assignRole('moderator');
+        dd($user->hasRole(Role::findByName('moderator')));
+        dd($user);
+         $role=Role::findById(2,'springadmins');
+         $role->givePermissionTo(2);
+            //$permission->assignRole($role);
 
-        // $menu = $springadmins->menu();
-//        dd($menu);
-        // app()['cache']->forget('spatie.permission.cache');
-        // $user = Auth::user();
-      
-        // dd($user);
-        //  $role=Role::findById(2,'springadmins');
-        //  $role->givePermissionTo(2);
-        //     //$permission->assignRole($role);
-
-        // dump($user->can('edit users admin'));
-        //  $user->assignRole('quatri');
-        //  $permissions = $user->permissions;
-        //  dd($permissions);
-        //     $role = Role::create(['name' => 'quatri']);
-        //     $permission = Permission::create(['name' => 'edit users quantri']);
+        dump($user->can('edit users admin'));
+         $user->assignRole('quatri');
+         $permissions = $user->permissions;
+         dd($permissions);
+            $role = Role::create(['name' => 'quatri']);
+            $permission = Permission::create(['name' => 'edit users quantri']);
 
            
         

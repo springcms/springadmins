@@ -7,7 +7,6 @@
 
     <h1>Users list</h1> 
 
-
      <div class="toolbar-widget list-header" id="Toolbar-listToolbar">
         <div class="control-toolbar">
 
@@ -23,7 +22,7 @@
         </div>
     </div>
     @include('springadmins::admin.partials.alertlist')
-    @include('springadmins::admin.usersadmin.partials.search')
+    @include('springadmins::admin.systemusers.partials.search')
 
     <div class="col-lg-13">
           <div class="box box-primary">
@@ -58,12 +57,12 @@
                                   <a href="#modal-delete-user" class="btn btn-default btn-sm" 
                                     data-toggle="modal" data-target="#modal-delete-user" 
                                  
-                                    data-deleteurl="{{route('users-admin.destroy', ['user' => $user->id])}}" 
+                                    data-deleteurl="{{route('system-users.destroy', ['user' => $user->id])}}" 
                                     data-loginname="{{$user->loginname}}" ><i class="fa fa-trash-o"></i></a>
                                   <a href="#modal-edit-user" class="btn btn-default btn-sm" 
                                       data-toggle="modal" data-target="#modal-edit-user"                                      
                                       data-fullname="{{$user->fullname}}"
-                                      data-editurl="{{ route('users-admin.update', ['user' => $user->id])}}"
+                                      data-editurl="{{ route('system-users.update', ['user' => $user->id])}}"
                                       data-loginname="{{$user->loginname}}" >
                                     <i class="fa fa-edit"></i></a>
                                 </div>
@@ -96,10 +95,10 @@
 
 @section('springadmins_js')
    
-    @include('springadmins::admin.usersadmin.modals.delete')
-    @include('springadmins::admin.usersadmin.modals.edit')
-    @include('springadmins::admin.usersadmin.modals.create')
+    @include('springadmins::admin.systemusers.modals.delete')
+    @include('springadmins::admin.systemusers.modals.edit')
+    @include('springadmins::admin.systemusers.modals.create')
     <!-- Script affter all-->
-    @include('springadmins::admin.usersadmin.scripts.manage-users')
+    @include('springadmins::admin.systemusers.scripts.manage-users')
 @stop
 

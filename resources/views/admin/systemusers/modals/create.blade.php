@@ -7,7 +7,7 @@
         <h4 class="modal-title">Create new user</h4>
       </div>
       <div class="modal-body">
-	        <form action="{{route('users-admin.store')}}" method="post">
+	        <form action="{{route('system-users.store')}}" method="post">
 	                {!! csrf_field() !!}
 	              <div class="box-body">
 	                <div class="form-group as-feedback {{ $errors->has('fullname') ? 'has-error' : '' }} ">
@@ -29,8 +29,8 @@
 	                  @endif
 	                </div>
 	                <div class="form-group has-feedback {{ $errors->has('password') ? 'has-error' : '' }}">
-	                  <label for="exampleInputPassword1">Password</label>
-	                  <input type="password" name="password"  class="form-control" id="exampleInputPassword1" placeholder="Password">
+	                  <label for="password">Password</label>
+	                  <input type="password" name="password"  class="form-control" id="password" placeholder="Password">
 	                  @if ($errors->has('password'))
 	                        <span class="help-block">
 	                            <strong>{{ $errors->first('password') }}</strong>
@@ -38,8 +38,8 @@
 	                  @endif
 	                </div>  
 	                <div class="form-group has-feedback {{ $errors->has('password_confirmation') ? 'has-error' : '' }}">
-	                  <label for="exampleInputPassword1">Password confirmation</label>
-	                  <input type="password" name="password_confirmation"  class="form-control" id="exampleInputPassword1" placeholder="password confirmation">
+	                  <label for="password_confirmation1">Password confirmation</label>
+	                  <input type="password" name="password_confirmation"  class="form-control" id="password_confirmation1" placeholder="password confirmation">
 	                  @if ($errors->has('password_confirmation'))
 	                        <span class="help-block">
 	                            <strong>{{ $errors->first('password_confirmation') }}</strong>

@@ -13,22 +13,22 @@ use SpringCms\SpringAdmins\App\ViewComposers\SpringAdminsComposer;
 
 class SpringAdminsServiceProvider extends BaseServiceProvider
 {
-    
+
     private $_packageTag = 'springadmins';
 
-    
+
 
     /**
      * Bootstrap services.
      *
      * @return void
      */
-    public function boot(Factory $view,  Dispatcher $events, Repository $config) 
+    public function boot(Factory $view, Dispatcher $events, Repository $config)
     {
         //
-        $this->publishConfig(); 
+        $this->publishConfig();
         $this->loadViews();
-        $this->loadRoutes();       
+        $this->loadRoutes();
         $this->loadMigrations();
         $this->loadTranslations();
         $this->publishAssets();
@@ -40,7 +40,7 @@ class SpringAdminsServiceProvider extends BaseServiceProvider
         static::registerMenu($events, $config);
 
 
- 
+
     }
 
     /**
@@ -68,14 +68,14 @@ class SpringAdminsServiceProvider extends BaseServiceProvider
     public static function registerMenu(Dispatcher $events, Repository $config)
     {
         $events->listen(BuildingMenu::class, function (BuildingMenu $event) use ($config) {
-            $menu = $config->get('springadmins.menu');            
+            $menu = $config->get('springadmins.menu');
             call_user_func_array([$event->menu, 'add'], $menu);
         });
     }
 
     private function loadViews()
     {
-        $viewsPath = $this->packagePath('resources/views'); 
+        $viewsPath = $this->packagePath('resources/views');
         $this->loadViewsFrom($viewsPath, $this->_packageTag);
 
     }
@@ -85,23 +85,23 @@ class SpringAdminsServiceProvider extends BaseServiceProvider
         $this->mergeConfigFrom($configPath, 'auth');
         //$configPath = $this->packagePath('config/adminlte.php');
         //$this->mergeConfigFrom($configPath, 'adminlte');
-        $configPath = $this->packagePath('config/springadmins.php');       
+        $configPath = $this->packagePath('config/springadmins.php');
         $this->mergeConfigFrom($configPath, $this->_packageTag);
     }
     private function loadMigrations()
     {
-        $viewsPath = $this->packagePath('migrations'); 
+        $viewsPath = $this->packagePath('migrations');
         $this->loadMigrationsFrom($viewsPath, $this->_packageTag);
     }
     private function loadRoutes()
     {
-       $routesPath = $this->packagePath('src/routes/springadmins.php'); 
-       $this->loadRoutesFrom($routesPath, $this->_packageTag);
+        $routesPath = $this->packagePath('src/routes/springadmins.php');
+        $this->loadRoutesFrom($routesPath, $this->_packageTag);
     }
     private function loadTranslations()
     {
-      $resourcesPath = $this->packagePath('resources/lang');
-      $this->loadTranslationsFrom( $resourcesPath,$this->_packageTag);
+        $resourcesPath = $this->packagePath('resources/lang');
+        $this->loadTranslationsFrom($resourcesPath, $this->_packageTag);
     }
 
     private function publishAssets()
@@ -113,7 +113,7 @@ class SpringAdminsServiceProvider extends BaseServiceProvider
 
     private function packagePath($path)
     {
-        return __DIR__."/../$path";
+        return __DIR__ . "/../$path";
     }
 
 
@@ -131,5 +131,5 @@ class SpringAdminsServiceProvider extends BaseServiceProvider
         $this->app['config']->set($key, array_merge_recursive(require $path, $config));
     }
 
-    
+
 }
