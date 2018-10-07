@@ -46,21 +46,21 @@ class HomeController extends SpringAdminsBaseController
     public function index(Request $request)
     {  
 
-        $this->authorize($ability);
+        //$this->authorize($ability);
         
 
-        $sendmail = Input::get('sendmail');   
-        //$sendmail = $request->input('sendmail');       
-        if($sendmail=='send'){
-            $objDemo = new \stdClass();
-            $objDemo->demo_one = 'Demo One Value';
-            $objDemo->demo_two = 'Demo Two Value';
-            $objDemo->sender = 'SenderUserName';
-            $objDemo->receiver = 'ReceiverUserName';
+        // $sendmail = Input::get('sendmail');   
+        // //$sendmail = $request->input('sendmail');       
+        // if($sendmail=='send'){
+        //     $objDemo = new \stdClass();
+        //     $objDemo->demo_one = 'Demo One Value';
+        //     $objDemo->demo_two = 'Demo Two Value';
+        //     $objDemo->sender = 'SenderUserName';
+        //     $objDemo->receiver = 'ReceiverUserName';
     
-            $result = Mail::to("hoantx@vimo.vn")->send(new SpringMail($objDemo));
-            dd($result);
-        }
+        //     $result = Mail::to("hoantx@vimo.vn")->send(new SpringMail($objDemo));
+        //     dd($result);
+        // }
         
 
             // // Reset cached roles and permissions
@@ -85,27 +85,27 @@ class HomeController extends SpringAdminsBaseController
             // $role->givePermissionTo(Permission::all());
 
 
-        app()['cache']->forget('spatie.permission.cache');
+        //app()['cache']->forget('spatie.permission.cache');
         $user = Auth::user(); 
-        echo \Request::route()->getname();    
+       // echo \Request::route()->getname();    
         //Permission::create(['name' => 'view customers']);
-        $user->givePermissionTo('view customers');
-        //$user->givePermissionTo(['edit customers', 'delete customers']);   
-        dd($user->can("unpublish customers"));
-        dd($user->hasRole(Role::findByName('moderator')));
-        $user->assignRole('moderator');
-        dd($user->hasRole(Role::findByName('moderator')));
-        dd($user);
-         $role=Role::findById(2,'springadmins');
-         $role->givePermissionTo(2);
-            //$permission->assignRole($role);
+       // $user->givePermissionTo('view customers');
+        $user->givePermissionTo(['edit customers', 'delete customers']);   
+         dump($user->can("now customers"));
+        // dd($user->hasRole(Role::findByName('moderator')));
+        // $user->assignRole('moderator');
+        // dd($user->hasRole(Role::findByName('moderator')));
+        // dd($user);
+        //  $role=Role::findById(2,'springadmins');
+        //  $role->givePermissionTo(2);
+        //     //$permission->assignRole($role);
 
-        dump($user->can('edit users admin'));
-         $user->assignRole('quatri');
-         $permissions = $user->permissions;
-         dd($permissions);
-            $role = Role::create(['name' => 'quatri']);
-            $permission = Permission::create(['name' => 'edit users quantri']);
+        // dump($user->can('edit users admin'));
+        //  $user->assignRole('quatri');
+        //  $permissions = $user->permissions;
+        //  dd($permissions);
+        //     $role = Role::create(['name' => 'quatri']);
+        //     $permission = Permission::create(['name' => 'edit users quantri']);
 
            
         

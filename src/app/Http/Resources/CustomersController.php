@@ -22,7 +22,7 @@ class CustomersController extends SpringAdminsBaseController
      */
     public function index()
     {
-
+        
         //$customers = DB::table('customers')->paginate(15);
 
         $customers = DB::table('customers')

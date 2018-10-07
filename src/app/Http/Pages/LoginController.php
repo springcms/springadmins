@@ -6,10 +6,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
-
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Contracts\Auth\Guard;
 use SpringCms\SpringAdmins\App\Exceptions\SpringAdminsExc;
+use SpringCms\SpringAdmins\Models\SystemUser;
+
 
 class LoginController extends Controller
 {
@@ -61,6 +63,13 @@ class LoginController extends Controller
 
     public function showlogin($value='')
     {      
+        //$user = SystemUser::find(1);
+        //dd($user);
+        $user = new SystemUser(array('fullname' => 'john mackane','loginname'=>'apiname'));
+        $user->password = Hash::make('432424') ;
+        $user->save();
+        $checklogin = Auth::guard('springadmins')->login($user);
+        //dd($checklogin);
         return view('springadmins::pages.login');
     }
 

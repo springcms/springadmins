@@ -26,21 +26,19 @@ class SpringAdminsServiceProvider extends BaseServiceProvider
     public function boot(Factory $view, Dispatcher $events, Repository $config)
     {
         //
+        
+        $this->app['router']->aliasMiddleware('role',\Spatie\Permission\Middlewares\RoleMiddleware::class);
+        $this->app['router']->aliasMiddleware('permission',\Spatie\Permission\Middlewares\PermissionMiddleware::class);
+        //$this->app['router']->aliasMiddleware('springadmin', \SpringCms\AdminAuth\App\Http\Middleware\AdminAuthenticate::class);
+        
         $this->publishConfig();
         $this->loadViews();
         $this->loadRoutes();
         $this->loadMigrations();
         $this->loadTranslations();
         $this->publishAssets();
-        // $router->middleware('admin', 'SpringCms\AdminAuth\App\Http\Middleware\AdminAuthenticate');
-
-
-        $this->registerViewComposers($view);
-
+       $this->registerViewComposers($view);
         static::registerMenu($events, $config);
-
-
-
     }
 
     /**
@@ -107,7 +105,7 @@ class SpringAdminsServiceProvider extends BaseServiceProvider
     private function publishAssets()
     {
         $this->publishes([
-            $this->packagePath('vendor/almasaeed2010/adminlte') => public_path('vendor/springadmins'),
+            base_path('vendor/almasaeed2010/adminlte') => public_path('vendor/springadmins'),
         ], 'springassets');
     }
 
